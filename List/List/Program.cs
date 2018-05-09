@@ -83,6 +83,32 @@ namespace List
                 Console.WriteLine("Customer3 object does not exist in the list");
             }
 
+            // Find() returns one object
+            Customer c2 = customers.Find(cust => cust.Salary > 5000);
+            Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c2.ID, c2.Name, c2.Salary);
+            //FindAll() 
+
+
+
+            // Convert an array to list 
+            Customer[] customerArray = new Customer[3];
+            customerArray[0] = customer1;
+            customerArray[1] = customer2;
+            customerArray[2] = customer3;
+            List<Customer> listCustomers = customerArray.ToList();
+            foreach(Customer c in listCustomers)
+            {
+                Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c.ID, c.Name, c.Salary);
+            }
+
+            // convert a list to a dictionary
+            Dictionary<int, Customer> dictionary = listCustomers.ToDictionary(x => x.ID);
+            foreach (KeyValuePair<int, Customer> kvp in dictionary)
+            {
+                Customer c = kvp.Value;
+                Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c.ID, c.Name, c.Salary);
+            }
+
 
 
 
